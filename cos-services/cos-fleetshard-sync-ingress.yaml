@@ -1,0 +1,18 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: cos-fleetshard-sync
+  namespace: redhat-openshift-connectors
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: cos-fleetshard-sync
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: cos-fleetshard-sync
+                port:
+                  number: 80

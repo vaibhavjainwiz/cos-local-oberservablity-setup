@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: camelk-operator
+  namespace: redhat-openshift-connectors
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: camelk-operator
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: camelk-operator
+                port:
+                  number: 80

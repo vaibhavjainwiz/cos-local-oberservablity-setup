@@ -1,0 +1,18 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: cos-fleetshard-operator-debezium
+  namespace: redhat-openshift-connectors
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: cos-fleetshard-operator-debezium
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: cos-fleetshard-operator-debezium
+                port:
+                  number: 80

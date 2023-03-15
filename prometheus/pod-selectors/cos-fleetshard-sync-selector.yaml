@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  labels:
+    app: cos
+  name: cos-fleetshard-sync-selector
+  namespace: redhat-openshift-connectors
+spec:
+  podMetricsEndpoints:
+    - interval: 30s
+      path: /q/metrics
+      port: web
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: cos-fleetshard-sync
+      app.kubernetes.io/part-of: cos
