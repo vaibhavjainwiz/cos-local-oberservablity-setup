@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: camel-k-operator-pod-selector
+  namespace: redhat-openshift-connectors
+  labels:
+    app: cos
+spec:
+  podMetricsEndpoints:
+    - interval: 15s
+      port: metrics
+  selector:
+    matchLabels:
+      app: camel-k

@@ -1,0 +1,13 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  labels:
+    operators.coreos.com/prometheus.redhat-openshift-connectors: ''
+  name: prometheus
+  namespace: redhat-openshift-connectors
+spec:
+  channel: beta
+  installPlanApproval: Automatic
+  name: prometheus
+  source: operatorhubio-catalog
+  sourceNamespace: olm
