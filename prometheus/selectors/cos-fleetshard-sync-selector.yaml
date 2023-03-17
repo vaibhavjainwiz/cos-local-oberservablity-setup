@@ -10,6 +10,7 @@ spec:
     - interval: 30s
       path: /q/metrics
       port: web
+      honorLabels: true
   selector:
     matchLabels:
       app.kubernetes.io/name: cos-fleetshard-sync

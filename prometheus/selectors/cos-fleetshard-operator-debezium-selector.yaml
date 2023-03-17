@@ -10,6 +10,7 @@ spec:
     - interval: 15s
       path: /q/metrics
       port: http
+      honorLabels: true
   selector:
     matchLabels:
       app.kubernetes.io/name: cos-fleetshard-operator-debezium
