@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: cos
+  name: kube-state-metrics-selector
+  namespace: redhat-openshift-connectors
+spec:
+  endpoints:
+    - port: http-metrics
+  namespaceSelector:
+    matchNames:
+      - kube-system
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kube-state-metrics

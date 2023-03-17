@@ -1,10 +1,13 @@
 apiVersion: monitoring.coreos.com/v1
 kind: Prometheus
 metadata:
-  name: prometheus-server
+  name: server
   namespace: redhat-openshift-connectors
 spec:
   podMonitorSelector:
+    matchLabels:
+      app: cos
+  serviceMonitorSelector:
     matchLabels:
       app: cos
   serviceAccountName: prometheus

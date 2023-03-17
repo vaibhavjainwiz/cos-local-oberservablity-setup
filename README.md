@@ -6,6 +6,31 @@ Setup Grafana and Prometheus on local minikube setup
 minikube addons enable ingress
 ```
 
+# Enable Metric Server addOn on Minikube
+```
+minikube addons enable metrics-server
+```
+
+# Clone `kube-state-metrics` repo
+```
+git clone git@github.com:kubernetes/kube-state-metrics.git
+```
+
+# Add label argument into Deployment 
+```
+spec:
+  template:
+    spec:
+      containers:
+        - args:
+          - '--metric-labels-allowlist=pods=[app.kubernetes.io/name,app,app.kubernetes.io/part-of]'
+```
+
+# Deploy `kube-state-metrics`
+```
+kubectl apply -f kube-state-metrics/examples/standard
+```
+
 # Install OLM
 ```
 kubectl create -f https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.23.1/crds.yaml
@@ -22,7 +47,7 @@ kubectl apply -f ./prometheus/install-prometheus-operator.yaml
 
 # Create PodMonitor CR instance of each RHOC service
 ```
-kubectl apply -f ./prometheus/pod-selector
+kubectl apply -f ./prometheus/selectors
 ```
 
 # Create Prometheus CR instance

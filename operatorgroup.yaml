@@ -1,0 +1,10 @@
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  generateName: redhat-openshift-connectors-
+  name: redhat-openshift-connectors-operator-group
+  namespace: redhat-openshift-connectors
+spec:
+  targetNamespaces:
+    - redhat-openshift-connectors
+  upgradeStrategy: Default
