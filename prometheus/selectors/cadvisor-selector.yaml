@@ -3,15 +3,15 @@ kind: ServiceMonitor
 metadata:
   labels:
     app: cos
-  name: kube-state-metrics-selector
+  name: cadvisor-selector
   namespace: monitoring
 spec:
   endpoints:
-    - port: http-metrics
-      honorLabels: true
+    - honorLabels: true
+      port: http
   namespaceSelector:
     matchNames:
-      - kube-system
+      - cadvisor
   selector:
     matchLabels:
-      app.kubernetes.io/name: kube-state-metrics
+      app: cadvisor

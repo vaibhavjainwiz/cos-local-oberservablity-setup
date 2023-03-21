@@ -2,7 +2,7 @@ kind: Ingress
 apiVersion: networking.k8s.io/v1
 metadata:
   name: ingress-grafana
-  namespace: redhat-openshift-connectors
+  namespace: monitoring
 spec:
   rules:
     - host: grafana-server

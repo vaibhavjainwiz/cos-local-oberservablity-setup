@@ -1,10 +1,10 @@
 apiVersion: operators.coreos.com/v1
 kind: OperatorGroup
 metadata:
-  generateName: redhat-openshift-connectors-
-  name: redhat-openshift-connectors-operator-group
-  namespace: redhat-openshift-connectors
+  generateName: monitoring-
+  name: monitoring-operator-group
+  namespace: monitoring
 spec:
   targetNamespaces:
-    - redhat-openshift-connectors
+    - monitoring
   upgradeStrategy: Default

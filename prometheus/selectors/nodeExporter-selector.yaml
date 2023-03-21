@@ -3,15 +3,16 @@ kind: ServiceMonitor
 metadata:
   labels:
     app: cos
-  name: kube-state-metrics-selector
+  name: node-exporter-selector
   namespace: monitoring
 spec:
   endpoints:
-    - port: http-metrics
-      honorLabels: true
+    - honorLabels: true
+      path: /metrics
+      targetPort: 9100
   namespaceSelector:
     matchNames:
-      - kube-system
+      - monitoring
   selector:
     matchLabels:
-      app.kubernetes.io/name: kube-state-metrics
+      app.kubernetes.io/name: node-exporter

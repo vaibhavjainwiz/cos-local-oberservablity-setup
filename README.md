@@ -31,6 +31,28 @@ spec:
 kubectl apply -f kube-state-metrics/examples/standard
 ```
 
+# Clone `cAdvisor` repo
+```
+git clone git@github.com:google/cadvisor.git 
+```
+
+# Deploy `cAdvisor`
+```
+kubectl apply -k cadvisor/deploy/kubernetes/base
+kubectl apply -f cadvisor-service.yaml
+```
+
+# Create `monitoring` namespace
+```
+kubectl apply -f ./prometheus/node-exporter/namespace.yaml
+```
+
+# Deploy `node-exporter`
+```
+kubectl apply -f ./prometheus/node-exporter/nodeExporter-daemonset.yaml
+kubectl apply -f ./prometheus/node-exporter/nodeExporter-service.yaml
+```
+
 # Install OLM
 ```
 kubectl create -f https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.23.1/crds.yaml
@@ -42,6 +64,7 @@ kubectl create -f https://github.com/operator-framework/operator-lifecycle-manag
 
 # Install Prometheus Operator
 ```
+kubectl apply -f operatorgroup.yaml
 kubectl apply -f ./prometheus/install-prometheus-operator.yaml
 ```
 

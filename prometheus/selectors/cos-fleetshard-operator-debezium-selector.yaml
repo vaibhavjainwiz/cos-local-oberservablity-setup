@@ -4,13 +4,16 @@ metadata:
   labels:
     app: cos
   name: cos-fleetshard-operator-debezium-selector
-  namespace: redhat-openshift-connectors
+  namespace: monitoring
 spec:
   podMetricsEndpoints:
     - interval: 15s
       path: /q/metrics
       port: http
       honorLabels: true
+  namespaceSelector:
+    matchNames:
+      - redhat-openshift-connectors
   selector:
     matchLabels:
       app.kubernetes.io/name: cos-fleetshard-operator-debezium

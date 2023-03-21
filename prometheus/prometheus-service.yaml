@@ -2,7 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: prometheus-service
-  namespace: redhat-openshift-connectors
+  namespace: monitoring
 spec:
   ports:
     - name: prometheus

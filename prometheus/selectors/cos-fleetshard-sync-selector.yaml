@@ -4,13 +4,16 @@ metadata:
   labels:
     app: cos
   name: cos-fleetshard-sync-selector
-  namespace: redhat-openshift-connectors
+  namespace: monitoring
 spec:
   podMetricsEndpoints:
     - interval: 30s
       path: /q/metrics
       port: web
       honorLabels: true
+  namespaceSelector:
+    matchNames:
+      - redhat-openshift-connectors
   selector:
     matchLabels:
       app.kubernetes.io/name: cos-fleetshard-sync

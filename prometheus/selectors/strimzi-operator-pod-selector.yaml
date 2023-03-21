@@ -2,13 +2,16 @@ apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
   name: strimzi-operator-pod-selector
-  namespace: redhat-openshift-connectors
+  namespace: monitoring
   labels:
     app: cos
 spec:
   podMetricsEndpoints:
     - interval: 15s
       port: http
+  namespaceSelector:
+    matchNames:
+      - redhat-openshift-connectors
   selector:
     matchLabels:
       app: strimzi
